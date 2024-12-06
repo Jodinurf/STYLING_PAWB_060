@@ -1,0 +1,68 @@
+<main class="container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 text-primary">Halaman Kontak</h1>
+        <p class="lead text-muted">Silakan kirimkan pesan kepada kami melalui formulir di bawah ini.</p>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg p-4" style="border-radius: 15px;">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Form Kontak</h3>
+                    <form action="/contact" method="POST">
+                        <div class="form-group">
+                            <label for="name">Nama Anda</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Anda</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Pesan Anda</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Daftar Pesan Kontak yang Telah Dikirim -->
+    <div class="mt-5">
+        <h3 class="text-center mb-4">Daftar Pesan Kontak</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>Pesan</th>
+                        <th>Waktu Kirim</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% contactMessages.forEach((message, index) => { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= message.name %></td>
+                            <td><%= message.email %></td>
+                            <td><%= message.message %></td>
+                            <td><%= message.timestamp %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<link rel="stylesheet" href="/styles/contact.css">
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
