@@ -1,6 +1,4 @@
-# Proyek Tugas Styling
-## Screenshot
-
+# Tugas Styling
 ### Tampilan Halaman Login
 
 ![Halaman Login](screenshot-tugas/tugas-styling/login.png)
