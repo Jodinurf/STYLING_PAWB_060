@@ -1,0 +1,21 @@
+<main class="d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+        <div class="text-center mb-4">
+            <img src="https://res.cloudinary.com/vistaprint/images/w_1024,h_600,c_scale,w_448,h_262,dpr_2/f_auto,q_auto/v1704437752/ideas-and-advice-prod/en-us/asdf/asdf.jpeg?_i=AA" alt="Logo" class="mb-4" width="250">
+            <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
+            <p class="mb-4">Masukkan akun kredensial Anda</p>
+        </div>
+        <form action="/login" method="POST">
+            <div class="form-group mb-3">
+                <input type="text" class="form-control" placeholder="Username" name="username" required>
+            </div>
+            <div class="form-group mb-3">
+                <input type="password" class="form-control" placeholder="Password" name="password" required>
+            </div>
+            <p class="mb-3">Belum punya akun? <a href="/register">Daftar di sini</a></p>
+            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+        </form>
+    </div>
+</main>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/styles/login.css">
