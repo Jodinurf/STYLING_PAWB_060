@@ -1,5 +1,4 @@
 # Proyek Tugas Styling
-<br>
 ## Screenshot
 
 ### Tampilan Halaman Login
