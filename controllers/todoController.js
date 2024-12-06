@@ -23,7 +23,6 @@ const getTodos = (req, res) => {
     });
 };
 
-// Add a new To-Do item
 const addTodo = (req, res) => {
     const { title, description } = req.body;
     const userId = req.session.userId;
@@ -42,7 +41,6 @@ const addTodo = (req, res) => {
     });
 };
 
-// Mark a To-Do item as done
 const markTodoAsDone = (req, res) => {
     const { id } = req.params;
 
@@ -56,7 +54,6 @@ const markTodoAsDone = (req, res) => {
     });
 };
 
-// Delete a To-Do item
 const deleteTodo = (req, res) => {
     const { id } = req.params;
 
@@ -70,7 +67,6 @@ const deleteTodo = (req, res) => {
     });
 };
 
-// Edit a To-Do item
 const editTodo = (req, res) => {
     const { id } = req.params;
     const { title, description } = req.body;
