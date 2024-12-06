@@ -1,6 +1,5 @@
 const db = require('../config/db');
 
-// Render the contact form page with existing contact messages
 const renderContactPage = (req, res) => {
     const sql = 'SELECT * FROM contact_messages ORDER BY timestamp DESC';
     db.query(sql, (err, results) => {
@@ -13,12 +12,11 @@ const renderContactPage = (req, res) => {
             title: 'Contact Us',
             showNavbar: true,
             showFooter: true,
-            contactMessages: results, // Pass contact messages to the view
+            contactMessages: results,
         });
     });
 };
 
-// Handle contact form submission
 const submitContactForm = (req, res) => {
     const { name, email, message } = req.body;
 
@@ -28,11 +26,10 @@ const submitContactForm = (req, res) => {
             console.error('Error submitting contact form:', err);
             return res.status(500).send('Error submitting contact form');
         }
-        res.redirect('/contact'); // Redirect after form submission
+        res.redirect('/contact'); 
     });
 };
 
-// Retrieve all contact messages (for admin view or message viewing)
 const getContactMessages = (req, res) => {
     const sql = 'SELECT * FROM contact_messages ORDER BY timestamp DESC';
     db.query(sql, (err, results) => {
