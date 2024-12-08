@@ -1,7 +1,14 @@
 <main class="container mt-5">
     <div class="text-center">
         <h1 class="display-4 mb-4">List To-Do</h1>
-        
+
+        <!-- Tambah Kegiatan Button -->
+        <button 
+            class="btn btn-primary mb-4" 
+            onclick="$('#addTodoModal').modal('show')">
+            Tambah Kegiatan
+        </button>
+
         <!-- Todo List -->
         <div class="row">
             <% todos.forEach(todo => { %>
@@ -10,17 +17,17 @@
                         <div class="card-body">
                             <!-- Title -->
                             <h5 class="card-title"><strong><%= todo.title %></strong></h5>
-                            
+
                             <!-- Description -->
                             <p class="card-text text-muted mb-2"><%= todo.description %></p>
-                            
+
                             <!-- Status -->
                             <p>
                                 <span class="badge <%= todo.is_done ? 'badge-success' : 'badge-warning' %>">
                                     <%= todo.is_done ? 'Selesai' : 'Belum Selesai' %>
                                 </span>
                             </p>
-                            
+
                             <!-- Actions -->
                             <div class="d-flex justify-content-between">
                                 <% if (!todo.is_done) { %>
@@ -28,13 +35,13 @@
                                         <button type="submit" class="btn btn-success btn-sm">Tandai telah Selesai</button>
                                     </form>
                                 <% } %>
-                                
+
                                 <button 
                                     class="btn btn-primary btn-sm"
                                     onclick="showEditForm('<%= todo.id %>', '<%= todo.title %>', '<%= todo.description %>')">
                                     Edit
                                 </button>
-                                
+
                                 <form action="/todos/<%= todo.id %>/delete" method="POST" class="d-inline">
                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                 </form>
@@ -44,16 +51,36 @@
                 </div>
             <% }) %>
         </div>
-        
-        <form action="/todos/add" method="POST" class="mt-4">
-            <div class="form-group">
-                <input type="text" class="form-control" name="title" placeholder="Tambah Judul Kegiatan" required>
+    </div>
+
+    <!-- Tambah Kegiatan Modal -->
+    <div class="modal" id="addTodoModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tambah Kegiatan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="/todos/add" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="addTitle">Judul</label>
+                            <input type="text" class="form-control" id="addTitle" name="title" placeholder="Tambah Judul Kegiatan" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="addDescription">Deskripsi</label>
+                            <textarea class="form-control" id="addDescription" name="description" placeholder="Tambah Deskripsi dari Kegiatan" rows="2" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <textarea class="form-control" name="description" placeholder="Tambah Deskripsi dari Kegiatan" rows="2" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary mt-2">Tambah Kegiatan</button>
-        </form>
+        </div>
     </div>
 
     <!-- Edit Todo Modal -->
@@ -69,11 +96,11 @@
                 <form id="editTodoForm" action="" method="POST">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="editTitle">Title</label>
+                            <label for="editTitle">Judul</label>
                             <input type="text" class="form-control" id="editTitle" name="title" required>
                         </div>
                         <div class="form-group">
-                            <label for="editDescription">Description</label>
+                            <label for="editDescription">Deskripsi</label>
                             <textarea class="form-control" id="editDescription" name="description" rows="2" required></textarea>
                         </div>
                     </div>
@@ -95,6 +122,7 @@
         $('#editTodoModal').modal('show');
     }
 </script>
+
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="/styles/todos.css">
