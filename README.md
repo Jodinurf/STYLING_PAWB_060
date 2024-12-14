@@ -20,7 +20,7 @@
 
 ![Halaman Todo](screenshot-tugas/tugas-styling/todo.png)
 
-### Tampilan Halaman Todo
+### Tampilan Halaman Todo dengan Hover
 ![Halaman Todo](screenshot-tugas/tugas-styling/todo-hover.png)
 
 ### Tampilan Halaman Contact 1
